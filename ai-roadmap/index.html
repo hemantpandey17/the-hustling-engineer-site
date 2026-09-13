@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Engineer Roadmap | The Hustling Engineer</title>
+
+    <meta
+        name="description"
+        content="Get the AI Engineer Roadmap — a practical roadmap for software engineers learning AI."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <div class="container">
+
+            <header class="header">
+                <a href="/" class="logo">
+                    The Hustling Engineer
+                </a>
+
+                <a
+                    href="https://thehustlingengineer.substack.com/subscribe"
+                    class="header-button"
+                    target="_blank"
+                >
+                    Newsletter
+                </a>
+            </header>
+
+
+            <section class="hero">
+
+                <div class="badge">
+                    FREE RESOURCE
+                </div>
+
+                <h1>
+                    The AI Engineer Roadmap
+                </h1>
+
+                <p class="subtitle">
+                    A practical roadmap to go from software engineer
+                    to AI engineer — without getting overwhelmed by
+                    everything happening in AI.
+                </p>
+
+
+                <div class="resource-card">
+
+                    <div class="checklist">
+
+                        <div class="check">
+                            <span>✓</span>
+                            GenAI fundamentals
+                        </div>
+
+                        <div class="check">
+                            <span>✓</span>
+                            LLM applications & RAG
+                        </div>
+
+                        <div class="check">
+                            <span>✓</span>
+                            AI Agents
+                        </div>
+
+                        <div class="check">
+                            <span>✓</span>
+                            MCP & modern AI tooling
+                        </div>
+
+                    </div>
+
+
+                    <form id="leadForm">
+
+                        <label for="email">
+                            Where should I send it?
+                        </label>
+
+                        <div class="form-row">
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                            <button type="submit">
+                                Get the Roadmap →
+                            </button>
+
+                        </div>
+
+                        <p class="privacy">
+                            No spam. Just useful resources for software engineers.
+                        </p>
+
+                    </form>
+
+                    <div id="success" class="success">
+                        🎉 Check your inbox! Your roadmap is on its way.
+                    </div>
+
+                    <div id="error" class="error">
+                        Something went wrong. Please try again.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                © 2026 The Hustling Engineer
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbzj2qd2UqBwCn5gOeJcXYc1-4L1tC522kYoX0JteOvMS0OXBv_S6rvGa9LmgAplBKdA/exec";
+
+        const form = document.getElementById("leadForm");
+        const success = document.getElementById("success");
+        const error = document.getElementById("error");
+
+        form.addEventListener("submit", async function (e) {
+
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const button = form.querySelector("button");
+
+            button.disabled = true;
+            button.innerText = "Sending...";
+
+            success.style.display = "none";
+            error.style.display = "none";
+
+            const formData = new FormData();
+
+            formData.append("email", email);
+            formData.append("resource", "AI_ROADMAP");
+
+            try {
+
+                await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: formData
+                });
+
+                form.style.display = "none";
+                success.style.display = "block";
+
+            } catch (err) {
+
+                console.error(err);
+
+                button.disabled = false;
+                button.innerText = "Get the Roadmap →";
+
+                error.style.display = "block";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
