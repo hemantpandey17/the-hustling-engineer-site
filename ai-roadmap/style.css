@@ -220,12 +220,15 @@ button:disabled {
     cursor: wait;
 }
 
-.privacy {
-    margin-top: 12px;
+.subscription-note {
+    margin-top: 14px;
 
     color: var(--muted);
 
     font-size: 12px;
+    line-height: 1.6;
+
+    text-align: center;
 }
 
 
